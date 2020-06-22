@@ -1,0 +1,53 @@
+platform :ios, '11.0'
+
+flipperkit_version = '0.47.0'
+
+def capacitor_pods
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Capacitor', :path => '../node_modules/@capacitor/ios'
+  pod 'CapacitorCordova', :path => '../node_modules/@capacitor/ios'
+end
+
+target 'Plugin' do
+  capacitor_pods
+end
+
+target 'PluginTests' do
+  capacitor_pods
+  
+  pod 'FlipperKit', '~>' + flipperkit_version, :configuration => 'Debug'
+  pod 'FlipperKit/FlipperKitLayoutComponentKitSupport', '~>' + flipperkit_version, :configuration => 'Debug'
+  pod 'FlipperKit/SKIOSNetworkPlugin', '~>' + flipperkit_version, :configuration => 'Debug'
+  pod 'FlipperKit/FlipperKitUserDefaultsPlugin', '~>' + flipperkit_version, :configuration => 'Debug'
+  # ...unfortunately at this time that means you'll need to explicitly mark
+  # transitive dependencies as being for debug build only as well:
+  pod 'Flipper-DoubleConversion', :configuration => 'Debug'
+  pod 'Flipper-Folly', :configuration => 'Debug'
+  pod 'Flipper-Glog', :configuration => 'Debug'
+  pod 'Flipper-PeerTalk', :configuration => 'Debug'
+  pod 'CocoaLibEvent', :configuration => 'Debug'
+  pod 'boost-for-react-native', :configuration => 'Debug'
+  pod 'OpenSSL-Universal', :configuration => 'Debug'
+  pod 'CocoaAsyncSocket', :configuration => 'Debug'
+  # ...except, of course, those transitive dependencies that your
+  # application itself depends, e.g.:
+  pod 'ComponentKit', '~> 0.30'
+  pod 'FlipperKit/SKIOSNetworkPlugin', '~>' + flipperkit_version
+  
+   $static_framework = ['FlipperKit', 'Flipper', 'Flipper-Folly',
+     'CocoaAsyncSocket', 'ComponentKit', 'Flipper-DoubleConversion',
+     'Flipper-Glog', 'Flipper-PeerTalk', 'Flipper-RSocket', 'Yoga', 'YogaKit',
+     'CocoaLibEvent', 'OpenSSL-Universal', 'boost-for-react-native']
+  
+   pre_install do |installer|
+     Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+     installer.pod_targets.each do |pod|
+         if $static_framework.include?(pod.name)
+           def pod.build_type;
+             Pod::BuildType.static_library
+           end
+         end
+       end
+   end
+end

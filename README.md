@@ -1,9 +1,97 @@
-# Capacitor Community Github Org
+# Capacitor Native Audio Plugin
 
-The `capacitor-community` GitHub org seeks to bring together the highest quality Capacitor plugins and the Capacitor plugin authoring community into a single place and help users find high quality, well maintained Capacitor plugins.
+Capacitory community plugin for native audio engine.
 
-Every plugin in the `capacitor-community` org commits to a base level of maintenance and quality control, and, as much as possible, follows a set of consistent design and code standards.
+## Maintainers
 
-Unlike the core Capacitor tooling and APIs, plugins in the `capacitor-community` are not maintained by the Ionic or Capacitor core team (though may be maintained by individuals on the team), but by the community and community maintainers. However, the Ionic and Capacitor team do facilitate and work closely with maintainers to ensure that plugins are kept up to date, follow the latest in Capacitor plugin standards, and have a broad set of useful functionality.
+| Maintainer | GitHub | Social | Sponsoring Company |
+| -----------| -------| -------| -------------------|
+| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [N/A](https://twitter.com) | Ionic |
 
-Beyond maintenance, plugin authors commit to providing a safe environment and adhere to the community Code of Conduct, and expect the same of all users.
+Mainteinance Status: Actively Maintained
+
+## Installation
+
+To use npm
+
+```bash
+npm install @capacitor/flipper
+```
+
+To use yarn
+
+```bash
+yarn add @capacitor/firebase-crashlytics
+```
+
+Sync native files
+
+```bash
+npx cap sync
+```
+
+On iOS, no further steps are needed.
+
+On Android, register the plugin in your main activity:
+
+```java
+import com.getcapacitor.community.flipper.Flipper;
+
+public class MainActivity extends BridgeActivity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    // Initializes the Bridge
+    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+      // Additional plugins you've installed go here
+      // Ex: add(TotallyAwesomePlugin.class);
+      add(Flipper.class);
+    }});
+  }
+}
+```
+
+## Configuration
+
+No configuration required for this plugin.
+
+## Supported methods
+
+| Name  | Android | iOS | Web
+| :---- | :--- | :--- | :--- |
+| initialize | ✅ | ✅ | ❌ 
+| emulateCrash | ✅ | ❌ | ❌ 
+
+## Usage
+
+```typescript
+import { Plugins } from '@capacitor/core';
+
+const { Flipper } = Plugins;
+
+/**
+ * This method will configure and initialize the flipper package.
+ * @param enabled - boolean true/false to enable/disable flipper
+ *        network - boolean true/false to enable network plugin
+ *        crash_report - boolean true/false to enable crash reporting
+ *        layout_inspector - boolean true/false to enable layout inspector
+ *        database - boolean true/false to enable database plugin (sqlite)
+ *        database_path - custom database path if database is not stored in application context (Android)
+ * @returns void
+ */
+Flipper.configure({
+  enabled: true,
+  network: true,
+  crash_report: true,
+  layout_inspector: true,
+  database: true,
+});
+
+/**
+ * This method will trigger a custom crash notification.
+ * @param none
+ * @returns void
+ */
+Flipper.emulateCrash();
+```

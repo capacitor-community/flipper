@@ -1,6 +1,6 @@
 
   Pod::Spec.new do |s|
-    s.name = 'Flipper'
+    s.name = 'CapacitorCommunityFlipper'
     s.version = '0.1.0'
     s.summary = 'A native plugin for flipper'
     s.license = 'MIT'

@@ -21,7 +21,7 @@ npm install @capacitor/flipper
 To use yarn
 
 ```bash
-yarn add @capacitor/firebase-crashlytics
+yarn add @capacitor/flipper
 ```
 
 Sync native files

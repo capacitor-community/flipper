@@ -1,7 +1,7 @@
 {
   "name": "@capacitor-community/flipper",
   "version": "0.0.1",
-  "description": "Capacitor Flipper",
+  "description": "A native plugin for flipper debugger",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {

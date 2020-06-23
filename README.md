@@ -1,6 +1,6 @@
-# Capacitor Native Audio Plugin
+# Capacitor Flipper Plugin
 
-Capacitory community plugin for native audio engine.
+Capacitory community plugin for [Flipper](https://fbflipper.com/).
 
 ## Maintainers
 
@@ -12,7 +12,7 @@ Mainteinance Status: Actively Maintained
 
 # Requirement
 
-Download [Flipper](https://fbflipper.com/), available for Linux/Windows/Mac
+Download [Flipper](https://fbflipper.com/), available for Linux/Windows/Mac or run `brew cask install flipper` on Mac
 
 ## Installation
 

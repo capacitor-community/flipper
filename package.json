@@ -1,5 +1,5 @@
 {
-  "name": "flipper",
+  "name": "@capacitor-community/flipper",
   "version": "0.0.1",
   "description": "Capacitor Flipper",
   "main": "dist/esm/index.js",

@@ -4,11 +4,15 @@ Capacitory community plugin for native audio engine.
 
 ## Maintainers
 
-| Maintainer | GitHub | Social | Sponsoring Company |
-| -----------| -------| -------| -------------------|
-| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [N/A](https://twitter.com) | Ionic |
+| Maintainer    | GitHub                                      | Social                                           | Sponsoring Company |
+| ------------- | ------------------------------------------- | ------------------------------------------------ | ------------------ |
+| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
 
 Mainteinance Status: Actively Maintained
+
+# Requirement
+
+Download [Flipper](https://fbflipper.com/), available for Linux/Windows/Mac
 
 ## Installation
 
@@ -38,16 +42,23 @@ On Android, register the plugin in your main activity:
 import com.getcapacitor.community.flipper.Flipper;
 
 public class MainActivity extends BridgeActivity {
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     // Initializes the Bridge
-    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
-      // Additional plugins you've installed go here
-      // Ex: add(TotallyAwesomePlugin.class);
-      add(Flipper.class);
-    }});
+    this.init(
+        savedInstanceState,
+        new ArrayList<Class<? extends Plugin>>() {
+
+          {
+            // Additional plugins you've installed go here
+            // Ex: add(TotallyAwesomePlugin.class);
+            add(Flipper.class);
+          }
+        }
+      );
   }
 }
 ```
@@ -58,15 +69,15 @@ No configuration required for this plugin.
 
 ## Supported methods
 
-| Name  | Android | iOS | Web
-| :---- | :--- | :--- | :--- |
-| initialize | ✅ | ✅ | ❌ 
-| emulateCrash | ✅ | ❌ | ❌ 
+| Name         | Android | iOS | Web |
+| :----------- | :------ | :-- | :-- |
+| initialize   | ✅      | ✅  | ❌  |
+| emulateCrash | ✅      | ❌  | ❌  |
 
 ## Usage
 
 ```typescript
-import { Plugins } from '@capacitor/core';
+import { Plugins } from "@capacitor/core";
 
 const { Flipper } = Plugins;
 
@@ -79,6 +90,7 @@ const { Flipper } = Plugins;
  *        database - boolean true/false to enable database plugin (sqlite)
  *        database_path - custom database path if database is not stored in application context (Android)
  * @returns void
+ * Make sure you have flipper running in background or restart the app for plugins to communicate with flipper
  */
 Flipper.configure({
   enabled: true,

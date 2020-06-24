@@ -74,6 +74,15 @@ No configuration required for this plugin.
 | initialize   | ✅      | ✅  | ❌  |
 | emulateCrash | ✅      | ❌  | ❌  |
 
+## Example
+
+### [Click here](https://github.com/priyankpat/capacitor-plugins-example/tree/flipper) for example code
+
+```bash
+git clone https://github.com/capacitor-community/flipper.git
+git checkout flipper
+```
+
 ## Usage
 
 ```typescript

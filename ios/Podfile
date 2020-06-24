@@ -11,10 +11,6 @@ end
 
 target 'Plugin' do
   capacitor_pods
-end
-
-target 'PluginTests' do
-  capacitor_pods
   
   pod 'FlipperKit', '~>' + flipperkit_version, :configuration => 'Debug'
   pod 'FlipperKit/FlipperKitLayoutComponentKitSupport', '~>' + flipperkit_version, :configuration => 'Debug'
@@ -27,7 +23,6 @@ target 'PluginTests' do
   pod 'Flipper-Glog', :configuration => 'Debug'
   pod 'Flipper-PeerTalk', :configuration => 'Debug'
   pod 'CocoaLibEvent', :configuration => 'Debug'
-  pod 'boost-for-react-native', :configuration => 'Debug'
   pod 'OpenSSL-Universal', :configuration => 'Debug'
   pod 'CocoaAsyncSocket', :configuration => 'Debug'
   # ...except, of course, those transitive dependencies that your
@@ -38,7 +33,7 @@ target 'PluginTests' do
    $static_framework = ['FlipperKit', 'Flipper', 'Flipper-Folly',
      'CocoaAsyncSocket', 'ComponentKit', 'Flipper-DoubleConversion',
      'Flipper-Glog', 'Flipper-PeerTalk', 'Flipper-RSocket', 'Yoga', 'YogaKit',
-     'CocoaLibEvent', 'OpenSSL-Universal', 'boost-for-react-native']
+     'CocoaLibEvent', 'OpenSSL-Universal']
   
    pre_install do |installer|
      Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
@@ -50,4 +45,8 @@ target 'PluginTests' do
          end
        end
    end
+end
+
+target 'PluginTests' do
+  capacitor_pods
 end

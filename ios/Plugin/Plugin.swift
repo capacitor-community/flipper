@@ -1,3 +1,4 @@
+import UIKit
 import Foundation
 import Capacitor
 import FlipperKit
@@ -46,9 +47,10 @@ public class Flipper: CAPPlugin {
             let client = FlipperClient.shared()
             
             if (self.layoutInspectorEnabled) {
+                let sharedApplication = UIApplication.shared
                 let layoutDescriptorMapper = SKDescriptorMapper(defaults: ())
                 FlipperKitLayoutComponentKitSupport.setUpWith(layoutDescriptorMapper)
-                client?.add(FlipperKitLayoutPlugin(rootNode: application, with: layoutDescriptorMapper!))
+                client?.add(FlipperKitLayoutPlugin(rootNode: sharedApplication, with: layoutDescriptorMapper!))
             }
     
             if (self.networkEnabled) {

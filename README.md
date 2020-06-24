@@ -92,7 +92,7 @@ const { Flipper } = Plugins;
  * @returns void
  * Make sure you have flipper running in background or restart the app for plugins to communicate with flipper
  */
-Flipper.configure({
+Flipper.initialize({
   enabled: true,
   network: true,
   crash_report: true,
@@ -105,5 +105,7 @@ Flipper.configure({
  * @param none
  * @returns void
  */
-Flipper.emulateCrash();
+Flipper.emulateCrash({
+  message: "Forced Crash",
+});
 ```

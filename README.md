@@ -19,13 +19,13 @@ Download [Flipper](https://fbflipper.com/), available for Linux/Windows/Mac or r
 To use npm
 
 ```bash
-npm install @capacitor/flipper
+npm install @capacitor-community/flipper
 ```
 
 To use yarn
 
 ```bash
-yarn add @capacitor/flipper
+yarn add @capacitor-community/flipper
 ```
 
 Sync native files
